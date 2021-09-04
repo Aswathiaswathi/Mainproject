@@ -1,0 +1,177 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <style>
+            *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+
+ body{
+  height: 100vh;
+  margin: 0 auto;
+  /* position: relative; */
+  background: linear-gradient(to right, #25aae1, #4481eb, #04befe, #3f86ed);
+}
+
+.container .form-1 {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  width: 40%;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3);
+}
+
+.form-1 h1 {
+  text-align: center;
+  margin-top: 0.7rem;
+  margin-bottom: 1.5rem;
+}
+
+input[type="email"],
+input[type="password"] {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid;
+  background: none;
+  margin: 0.9rem 2rem;
+  font-size: 1rem;
+}
+
+label {
+  margin: 0 2rem;
+}
+
+span {
+  margin: 0 2rem;
+  color: blue;
+  cursor: pointer;
+}
+
+button {
+  /* margin: 2rem;
+  margin-bottom: 1.5rem; */
+  margin-top: 500px;
+  position: absolute;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 1rem;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: bolder;
+  color: #fff;
+  background: linear-gradient(to right, #c500c6, #4481eb);
+}
+button a, button a:hover{
+  text-decoration: none;
+  color: #fff;
+}
+#createdjobs{
+    position: absolute;
+    margin-top: 600px;
+}
+
+
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <section>
+      <form class="form-1">
+        <h1>Your Account</h1>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" placeholder="{{accountdata.remail}}" />
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" placeholder="{{accountdata.rpassword}}" />
+              
+      </form>
+      <div class="text-center">
+            <button><a href="{% url 'createdjobs' %}"> created Jobs</a></button>
+      </div>
+    </section>
+    <section id="createdjobs">
+        <div class="container">
+            {% for i in crjb %}
+             <div class="card w-75 m-2">
+                <div class="card-body">
+                  <h5 class="card-title">{{i.jobtitle}}</h5>
+                  <p class="card-text">
+                    <table class="table table-borderless">
+                      
+                      <tbody>
+                        <tr>
+                          <th scope="row">Company name</th>
+                          <td>{{i.companyname}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Company website</th>
+                          <td>{{i.companysite}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Job Type</th>
+                          <td>{{i.jobtype}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Job location</th>
+                          <td>{{i.joblocation}}</td>
+                        </tr>
+                       
+                        <tr>
+                          <th scope="row" rowspan="3">Description</th>
+                          <td rowspan="3">{{i.companydesc}}</td>
+                        </tr>
+                        <tr></tr>
+                        <tr></tr>
+                        <tr>
+                          <th scope="row">Qualification</th>
+                          <td>{{i.jobqualification}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Qualification</th>
+                          <td>{{i.jobexperience}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Link to apply</th>
+                          <td>{{i.joblink}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <a href="{% url 'deletejob' i.id %}" class="btn btn-outline-danger">Delete Job</a>
+
+
+                  </p>
+                </div>
+              </div> 
+              {% empty %}
+              <h2>No jobs created</h2>
+            {% endfor %}
+        </div>
+    
+
+    </section>
+</div>
+
+        
+    
+    
+    
+    
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    
+</body>
+</html>

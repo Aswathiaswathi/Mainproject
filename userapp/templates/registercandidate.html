@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <style>
+        html{
+            height: 100%;
+        }
+        body{
+            height: 100%;
+            /* background: linear-gradient(#00c2ba,#000099); */
+            /* background-image: url('static/img/register.jpg'); */
+            background-color: #b3b4b6;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        /* .heading {
+            background-color: black;
+            color: #fff;
+            text-align: center;
+        } */
+        .section{
+            background-color: #000;
+            background-image: radial-gradient(#424242,#000);
+            height: auto;
+            opacity: 0.8;
+            color: #fff;
+        }
+        #registerbtn{
+            border: solid 2px #ccc;
+            border-radius: 25px;
+            background-image: linear-gradient(#00ffff,#000099);
+        }
+        p{
+            color: red;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"><br>
+        <div class="section ">
+            <center><div class="heading"><h1>Register Yourself</h1></div></center>
+            <div class="formbody ">
+                <form class="col-md-10 offset-md-1" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Name</label>
+                            <input type="text" class="form-control" id="inputEmail4" name="firstname" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Email</label>
+                            <input type="email" class="form-control" id="inputEmail4" name="email" required>
+                        </div>
+                        </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword4">Password</label>
+                            <input type="password" class="form-control" id="inputPassword4" name="psw" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputrePassword">Re-Enter Password</label>
+                            <input type="password" class="form-control" id="inputrePassword" name="psw-repeat" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                    <label for="inputAddress">Address</label>
+                    <input type="text" class="form-control" id="inputAddress"  name="address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputphone">Phone Number</label>
+                        <input type="text" class="form-control" id="inputphone" name="phone" required> 
+                        </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputqual">Qualification</label>
+                            <input type="text" class="form-control" id="inputqual" name="qual" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputexp">Experience</label>
+                            <!-- <input type="text" class="form-control" id="inputlname" name="exp" required> -->
+                            <select class="custom-select" id="inputexp" name="exp" required>
+                                <option selected>Select your experience</option>
+                                <option >Fresher</option>
+                                <option>1 year</option>
+                                <option>2 years</option>
+                                <option>3 years</option>
+                                <option>4 years</option>
+                                <option>5 years</option>
+                                <option>More than 5 years</option>
+                              </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputcv">Upload your CV or Resume</label>
+                        
+                            <input type="file" name="cv" class="form-control" id="inputcv"  required enctype="multipart/form-data">
+                            <!-- <label class="custom-file-label" for="customFile">Choose file</label> -->
+                        <!-- </div> -->
+                    </div>
+
+
+
+                        {% if msg %}
+                        <p>{{ msg }}</p>
+                        {% endif %}
+                    <button type="submit" class="btn  btn-primary col-md-6 offset-md-3" id="registerbtn">Register</button><br><br>
+                    <label class="csignlink col-md-6 offset-md-3">Already have an account? <a href="{% url 'clog' %}">Sign in here..</a></label><br><br>
+
+                   
+                </form>
+            </div>
+        </div>
+    </div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    
+</body>
+</html>
